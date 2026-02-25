@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grid</title>
+
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+      <h2>Brooklyn Nine-Nine</h2></div>
+  <div class="characters">
+      <a href="#">Link 1</a>
+      <br>
+      <a href="#">Link 2</a>
+      <br>
+      <a href="#">Link 3</a>
+  </div>
+  <div class="cast">
+      <h3>Lorem Ipsum</h3>
+      <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Ridiculus sit nisl laoreet facilisis aliquet. Potenti dignissim litora eget montes rhoncus sapien neque urna. Cursus libero sapien integer magnis ligula lobortis quam ut.</p>
+  </div>
+  <div class="description">
+      <h4>Footer</h4></div>
+  <div class="years">
+    <h4>Hello</h4>
+  </div>
+</div>
+
+</body>
+<style>
+  .container {
+    display: grid;
+    grid-template-areas:
+    "header header header header"
+    "characters characters cast cast"
+    "footer footer footer years";
+
+    grid-template-columns: 1fr 4fr;
+    gap: 3px;
+    background-color: dodgerblue;
+    padding: 5px;
+  }
+  .container div {
+    background-color: white;
+    padding: 10px;
+  }
+  .container div.header {
+    grid-area: header;
+    text-align: center;
+  }
+  .container div.characters {
+    grid-area: menu;
+  }
+  .container div.cast {
+    grid-area: content;
+  }
+  .container div.description {
+    grid-area: footer;
+    text-align: center;
+  }
+  .container div.years {
+    grid-area: hello;
+  }
+   </style>
+</html>
+
+
