@@ -7,18 +7,20 @@
 <body>
 
 
-    <h1 style="text-align: center;text-decoration-line: overline;text-decoration-color: lightslategrey">Welcome to my page!</h1>
+    <h1 style="text-align: center;text-decoration-line: overline;text-decoration-color: lightslategrey" id="opening">Welcome to my page!</h1>
     <p class="one" style="color:black"> My name is Charlotte, and I'm a high school student from Brooklyn, New York! This is my site for my Web Development class!</p>
-    <img src="https://cdn.britannica.com/80/115080-050-46BE2B70/Brooklyn-Bridge-East-River-New-York-City.jpg" alt="Brooklyn" width="150" style="text-align: center;">
+   <div style="text-align: center">
+      <img src="https://cdn.britannica.com/80/115080-050-46BE2B70/Brooklyn-Bridge-East-River-New-York-City.jpg" alt="Brooklyn" width="150" style="text-align: center; display: block">
+   </div>
 
     <p class="new"> <i>view my <a href="First" >First Page</a></i></p>
     <p class="new"> <i>view my <a href="Recipe" >Blueberry Spoon Cake Recipe</a></i></p>
 
-    <p class="labels"><small>My favorite color is</small> <b>blue</b></p>
+    <p class="labels"><small>My favorite color is</small> <span style="color: midnightblue"><b>blue</b></span></p>
     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEUAIUfDXfwKAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC" alt="blue" style="rotate:-3deg">
 
     <p class="labels"><small>My favorite food is</small> <b>sushi</b></p>
-    <img src="moresushi.jpeg" alt="sushi" height="225" >
+    <img src="sushi.jpeg" alt="sushi" height="225">
 
     <p class="labels" style="break-after:always"><small>I play </small><b>softball</b></p>
     <br>
@@ -56,6 +58,7 @@
         color:lightslategrey;
     }
 
+    /*command-slash is how you comment out code*/
     img{
         margin-inline: 15px;
         outline: lightslategrey dotted thick;
@@ -63,6 +66,13 @@
 
     body{
         background-color: #dce5f2;
+    }
+
+    #opening{
+        background-color: whitesmoke;
+        padding: 50px;
+        border: 5px solid lightslategrey;
+        margin: 50px;
     }
 
 </style>
