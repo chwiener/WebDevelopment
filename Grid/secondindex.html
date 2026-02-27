@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The O.C.</title>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h2>The O.C.</h2></div>
+  <div class="characters">
+    <h3>Main Characters</h3>
+    <ul>
+      <li>Seth Cohen</li>
+      <li>Summer Roberts</li>
+      <li>Ryan Atwood</li>
+      <li>Marissa Cooper</li>
+      <li>Sandy Cohen</li>
+      <li>Kirsten Cohen</li>
+      <li>Julie Cooper</li>
+    </ul>
+  </div>
+  <div class="cast">
+    <h3>Cast</h3>
+    <ul>
+      <li>Adam Brody</li>
+      <li>Rachel Bilson</li>
+      <li>Ben McKenzie</li>
+      <li>Mischa Barton</li>
+      <li>Peter Gallagher</li>
+      <li>Kelly Rowan</li>
+      <li>Melinda Clarke</li>
+    </ul>
+  </div>
+  <div class="description">
+    <h4>The O.C. is a teen drama focusing on teenagers in Orange County, California. It has four seasons, and it loved by people of many generations for its plot.</h4>
+  </div>
+  <div class="awards">
+    <h2>Awards</h2>
+    <p>12 Teen Choice Awards, 1 ICG Publicists Award, 1 Logie Award, 1 Prism Award</p>
+  </div>
+  <div class="years">
+    <h2>This show ran from 2003-2007</h2>
+  </div>
+
+</div>
+
+</body>
+<style>
+  .container {
+    display: grid;
+    grid-template-areas:
+    "header header header header"
+    "menu menu content content"
+    "footer footer footer footer"
+    "awards awards awards years";
+
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 85px 225px auto 135px;
+    gap: 3px;
+    background-color: lightslategrey;
+    padding: 5px;
+  }
+  .container div {
+    background-color: white;
+    padding: 20px;
+  }
+  .container div.header {
+    grid-area: header;
+    text-align: center;
+  }
+  .container div.characters {
+    grid-area: menu;
+  }
+  .container div.cast {
+    grid-area: content;
+  }
+  .container div.description {
+    grid-area: footer;
+    text-align: center;
+  }
+  .container div.years {
+    /*grid-area: footer; [30px, 60px];*/
+    grid-column:span 1;
+    /*display: inline*/
+  }
+  .container div.awards {
+    grid-column: span 3;
+    /*display: inline;*/
+  }
+</style>
+</html>

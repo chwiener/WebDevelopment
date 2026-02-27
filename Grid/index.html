@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Grid</title>
+  <title>Brooklyn Nine-Nine</title>
 
 </head>
 <body>
@@ -11,20 +11,42 @@
   <div class="header">
       <h2>Brooklyn Nine-Nine</h2></div>
   <div class="characters">
-     <p>...coming soon</p>
+     <h3>Main Characters</h3>
+      <ul>
+         <li>Det. Jake Peralta</li>
+         <li>Det. Amy Santiago</li>
+         <li>Capt. Raymond Holt</li>
+         <li>Gina Linetti</li>
+         <li>Det. Rosa Diaz</li>
+         <li>Sgt. Terry Jeffords</li>
+          <li>Det. Charles Boyle</li>
+         <li>Det. Michael Hitchcock</li>
+         <li>Norm Scully</li>
+     </ul>
   </div>
   <div class="cast">
-      <h3>Lorem Ipsum</h3>
-      <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Ridiculus sit nisl laoreet facilisis aliquet. Potenti dignissim litora eget montes rhoncus sapien neque urna. Cursus libero sapien integer magnis ligula lobortis quam ut.</p>
+      <h3>Cast</h3>
+      <ul>
+          <li>Andy Samberg</li>
+          <li>Melissa Fumero</li>
+          <li>Andre Braugher</li>
+          <li>Chelsea Peretti</li>
+          <li>Stephanie Beatriz</li>
+          <li>Terry Crews</li>
+          <li>Joe Lo Truglio</li>
+          <li>Dirk Blocker</li>
+          <li>John McKinnon Miller</li>
+      </ul>
   </div>
   <div class="description">
       <h4>Brooklyn Nine-Nine is an ensemble workplace comedy surrounding a New York police precinct and it's detectives. It has eight seasons, and it highly acclaimed for its humor, comedy, and wide range of topics covered.</h4>
   </div>
     <div class="awards">
-        <p>awards coming soon</p>
+       <h2>Awards</h2>
+        <p>2 Emmys, 2 Golden Globes, 2 Critics Choice Awards, 1 American Comedy Award, 1 GLAAD Media Award, 2 Imagen Foundation Awards, 3 Gracie Allen Awards, 2 OFTA Awards, 1 INOCA Award, </p>
     </div>
     <div class="years">
-    <h4>Hello</h4>
+        <h2>This show ran from 2013-2021</h2>
   </div>
 
 </div>
@@ -37,16 +59,17 @@
     "header header header header"
     "menu menu content content"
     "footer footer footer footer"
-    "awards awards years years";
+    "awards awards awards years";
 
     grid-template-columns: auto auto auto auto;
+      grid-template-rows: 85px 275px auto 185px;
     gap: 3px;
-    background-color: dodgerblue;
+    background-color: lightslategrey;
     padding: 5px;
   }
   .container div {
     background-color: white;
-    padding: 10px;
+    padding: 20px;
   }
   .container div.header {
     grid-area: header;
@@ -64,9 +87,12 @@
   }
   .container div.years {
     /*grid-area: footer; [30px, 60px];*/
+      grid-column:span 1;
+      /*display: inline*/
   }
   .container div.awards {
-
+    grid-column: span 3;
+      /*display: inline;*/
   }
    </style>
 </html>
