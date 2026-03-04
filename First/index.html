@@ -5,7 +5,9 @@
     <title>First</title>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <div class="box">
+    <h1 class="beginning" style="transition-property: color">Hello World</h1>
+    </div>
     <h2 class="first"><u>this</u> is h2</h2>
     <h3 class="second"><i>this</i> is h3</h3>
     <h4 class="first"><u>this</u> is h4</h4>
@@ -27,5 +29,23 @@
 </body>
 <style>
     h4,h2.first{color:orangered}
+
+    .beginning{
+        transition-property: color;
+        transition-duration: 2s;
+        transition-timing-function: ease-in-out;
+
+    }
+    div{
+        width: 100px;
+        height: 100px;
+        background:red;
+        position: relative;
+        animation:mymove 5s 3;
+    }
+    @keyframes mymove{
+    from{top:200px;}
+    to{top:0}}
+
 </style>
 </html>
