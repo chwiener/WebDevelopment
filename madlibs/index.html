@@ -22,7 +22,7 @@
     <button onclick="madlibs()">Submit</button>
   </div>
 
-  <div id="results">
+  <div id="results" style="display:none">
     <p>Yesterday, I woke up in my <span id="nounOutput">____ (noun)</span>. I was very <span id="adjective1output">____ (adjective)</span>, but I had to get up. I went to get ready to go to <span id="place1output">____ (noun, place)</span>, and no one else was awake. I was very confused, but I went to <span id="verbOutput">____ (verb)</span> my <span id="bodypartOutput">____(body part) </span>. After, I wanted breakfast, so I made some <span id="foodOutput"> ____ (food)</span>, but it was very <span id="adjective2output">____ (adjective)</span>, and I had to throw it out. It was very dark outside, so I went on my phone to check the time, and it was still <span id="timeOutput">____ (time)</span> o’clock! I was so surprised! Anyway, I went back to sleep because it was too <span id="adverbOutput">____ (adverb)</span> to go to <span id="place2output">____ (place)</span>.
     </p>
   </div>
@@ -30,6 +30,8 @@
 
 <script>
   function madlibs() {
+    document.getElementById("entry").style.display = "none";
+
     // console.log("submit");
     let noun_input = document.getElementById("noun");
     document.getElementById("nounOutput").innerHTML = noun_input.value;
@@ -62,6 +64,8 @@
 
     let place2_input = document.getElementById("place2");
     document.getElementById("place2output").innerHTML = place2_input.value;
+
+    document.getElementById("results").style.display = "block";
   }
 </script>
 </html>
