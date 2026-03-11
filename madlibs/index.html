@@ -23,11 +23,16 @@
   </div>
 
   <div id="results" style="display:none">
-    <p>Yesterday, I woke up in my <span id="nounOutput">____ (noun)</span>. I was very <span id="adjective1output">____ (adjective)</span>, but I had to get up. I went to get ready to go to <span id="place1output">____ (noun, place)</span>, and no one else was awake. I was very confused, but I went to <span id="verbOutput">____ (verb)</span> my <span id="bodypartOutput">____(body part) </span>. After, I wanted breakfast, so I made some <span id="foodOutput"> ____ (food)</span>, but it was very <span id="adjective2output">____ (adjective)</span>, and I had to throw it out. It was very dark outside, so I went on my phone to check the time, and it was still <span id="timeOutput">____ (time)</span> o’clock! I was so surprised! Anyway, I went back to sleep because it was too <span id="adverbOutput">____ (adverb)</span> to go to <span id="place2output">____ (place)</span>.
+    <p>Yesterday, I woke up in my <span id="nounOutput" class="new">____ (noun)</span>. I was very <span id="adjective1output" class="new">____ (adjective)</span>, but I had to get up. I went to get ready to go to <span id="place1output" class="new">____ (noun, place)</span>, and no one else was awake. I was very confused, but I went to <span id="verbOutput" class="new">____ (verb)</span> my <span id="bodypartOutput" class="new">____(body part) </span>. After, I wanted breakfast, so I made some <span id="foodOutput" class="new"> ____ (food)</span>, but it was very <span id="adjective2output" class="new">____ (adjective)</span>, and I had to throw it out. It was very dark outside, so I went on my phone to check the time, and it was still <span id="timeOutput" class="new">____ (time)</span> o’clock! I was so surprised! Anyway, I went back to sleep because it was too <span id="adverbOutput" class="new">____ (adverb)</span> to go to <span id="place2output" class="new">____ (place)</span>.
     </p>
   </div>
 </body>
-
+<style>
+  span.new {
+    color: orange;
+    text-decoration-line: underline;
+  }
+</style>
 <script>
   function madlibs() {
     document.getElementById("entry").style.display = "none";
@@ -65,7 +70,13 @@
     let place2_input = document.getElementById("place2");
     document.getElementById("place2output").innerHTML = place2_input.value;
 
+    if(adjective1_input.value != "school"){
+      document.getElementById("results").style.display = "block";
+      document.getElementById("entry").style.display = "none";
+    }
+
     document.getElementById("results").style.display = "block";
+    document.getElementById("entry").style.display = "none";
   }
 </script>
 </html>
