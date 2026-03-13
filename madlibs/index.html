@@ -35,48 +35,65 @@
 </style>
 <script>
   function madlibs() {
+    let inputs = "";
     document.getElementById("entry").style.display = "none";
 
     // console.log("submit");
     let noun_input = document.getElementById("noun");
     document.getElementById("nounOutput").innerHTML = noun_input.value;
+    inputs = inputs + noun_input.value
     // console.log(noun_input);
     // console.log(noun_input.value);
 
     let adjective1_input = document.getElementById("adjective1");
     document.getElementById("adjective1output").innerHTML = adjective1_input.value;
+    inputs = inputs + adjective1_input.value
 
     let place1_input = document.getElementById("place1");
     document.getElementById("place1output").innerHTML = place1_input.value;
+    inputs = inputs + place1_input.value
 
     let verb_input = document.getElementById("verb");
     document.getElementById("verbOutput").innerHTML = verb_input.value;
+    inputs = inputs + verb_input.value
 
     let bodypart_input = document.getElementById("bodypart");
     document.getElementById("bodypartOutput").innerHTML = bodypart_input.value;
+    inputs = inputs + bodypart_input.value
 
     let food_input = document.getElementById("food");
     document.getElementById("foodOutput").innerHTML = food_input.value;
+    inputs = inputs + food_input.value
 
     let adjective2_input = document.getElementById("adjective2");
     document.getElementById("adjective2output").innerHTML = adjective2_input.value;
+    inputs = inputs + adjective2_input.value
 
     let time_input = document.getElementById("time");
     document.getElementById("timeOutput").innerHTML = time_input.value;
+    inputs = inputs + time_input.value
 
     let adverb_input = document.getElementById("adverb");
     document.getElementById("adverbOutput").innerHTML = adverb_input.value;
+    inputs = inputs + adverb_input.value
 
     let place2_input = document.getElementById("place2");
     document.getElementById("place2output").innerHTML = place2_input.value;
+    inputs = inputs + place2_input.value
 
-    // if(adjective1_input.value != ){
-    //   document.getElementById("results").style.display = "none";
-    //   document.getElementById("entry").style.display = "block";
-    // }
+    if(noun_input.value != "" && adjective1_input != "" && place1_input.value != ""){
+      document.getElementById("results").style.display = "none";
+      document.getElementById("entry").style.display = "block";
+    }else {
+      alert("Please enter a value for each input!")
+    }
 
     document.getElementById("results").style.display = "block";
     document.getElementById("entry").style.display = "none";
+
   }
+
+
+
 </script>
 </html>
