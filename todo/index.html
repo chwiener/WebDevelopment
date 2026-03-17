@@ -5,13 +5,30 @@
     <title>Title</title>
 </head>
 <body>
-  <h2 style="color: lightslategrey; text-align: center"><u>To-Do List</u></h2>
-    <input type="checkbox" id="vehicle1" name="vehicle1" value="English HW"">
-    <label for="vehicle1">English HW</label><br>
-    <input type="checkbox" id="vehicle2" name="vehicle2" value="Math HW">
-    <label for="vehicle2">Math HW</label><br>
-    <input type="checkbox" id="vehicle3" name="vehicle3" >
-    <label for="vehicle3">History HW</label>
+
+<h2 style="color:lightslategrey; text-align: center"><u>Add Task</u></h2>
+    <input id="task" type="text">
+    <button onclick="new_task()">Add</button>
+
+<h2 style="color: lightslategrey; text-align: center"><u>To-Do List</u></h2>
+    <div id="task_list">
+<!--        <div class="task">-->
+<!--            <input type="checkbox" id="vehicle1" name="vehicle1" value="English HW">-->
+<!--            <label for="vehicle1">English HW</label><br>-->
+<!--        </div>-->
+<!--        <div class="task">-->
+<!--            <input type="checkbox" id="vehicle2" name="vehicle2" value="Math HW">-->
+<!--            <label for="vehicle2">Math HW</label><br>-->
+<!--        </div>-->
+<!--        <div class="task">-->
+<!--            <input type="checkbox" id="vehicle3" name="vehicle3" >-->
+<!--            <label for="vehicle3">History HW</label>-->
+<!--        </div>-->
+<!--    <div class="task">-->
+<!--            <input>-->
+<!--    </div>-->
+</div>
+
 </body>
 <style>
   label {
@@ -19,6 +36,39 @@
   }
 </style>
 <script>
+function new_task(){
+  let task_input = document.getElementById("task");
 
+    let task_name = task_input.value;
+    console.log(task_name);
+    if(task_name == ""){
+        return false
+    }
+
+    let new_div = document.createElement("div");
+    new_div.className = "task";
+    document.getElementById("task_list").appendChild(new_div);
+
+
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    new_div.appendChild(checkbox);
+
+    let span = document.createElement("span");
+    new_div.appendChild(span);
+    span.setAttribute("class", "task_name");
+    span.innerText = task_name;
+
+   task_input.value = "";
+
+    // task_input = focus()
+    // how do you do the focus??
+
+
+    console.log(new_div);
+    console.log(task_input.value);
+
+
+}
 </script>
 </html>
