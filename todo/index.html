@@ -51,6 +51,14 @@ function new_task(){
 
 
     let checkbox = document.createElement("input");
+        checkbox.setAttribute("onchange", "function strike_(box) {\n" +
+            "   if (box.checked) {\n" +
+                "   box.parentElement.querySelector('span').style.textDecoration = 'line-through';\n" +
+            "   } else {\n" +
+                "   box.parentElement.querySelector('span').style.textDecoration = 'none';\n" +
+            "   } \n" +
+        "   } \n" +
+        "   strike_(this)")
     checkbox.type = "checkbox";
     new_div.appendChild(checkbox);
 
