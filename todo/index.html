@@ -79,8 +79,8 @@
     window.onload = function(){
         let existing = getCookie("tasks");
         if(existing !== ""){
-            let taskArray = existing.split("|");
-            taskArray.forEach(task => renderTask(task));
+            // let taskArray = existing.split("|");
+            // taskArray.forEach(task => renderTask(task));
         }
     };
 
@@ -93,12 +93,18 @@
         return false
     }
 
-    let existing = getCookie("tasks");
+    // setCookie("task_name", task_name, 15);
+
+        let existing = getCookie("tasks");
     let updated = existing === "" ? task_name : existing + "|" + task_name;
-    setCookie("tasks", updated, 7);
+        setCookie("tasks", updated, 15);
+    // let now = new Date();
+    //     setCookie(now.toUTCString(), task_name, 15);
+    //     setCookie("task", getCookie("task") + "|" + task_name, 15);
 
 
-    // DO I NEED THIS PART????
+
+        // DO I NEED THIS PART????
     if(existing === ""){
         existing = task_name;
     } else {
