@@ -97,11 +97,14 @@
     let updated = existing === "" ? task_name : existing + "|" + task_name;
     setCookie("tasks", updated, 7);
 
+
+    // DO I NEED THIS PART????
     if(existing === ""){
         existing = task_name;
     } else {
         existing = existing + "|" + task_name;
     }
+    // I DON'T KNOW I CAN'T TELL IF IT'S WORKING
 
     setCookie("tasks", existing, 7);
 
