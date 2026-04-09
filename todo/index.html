@@ -53,6 +53,29 @@
   }
 </style>
 <script>
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
     // function setCookie(cname, cvalue, exdays) {
     //     const d = new Date();
     //     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -74,6 +97,14 @@
     //     return "";
     // }
 
+    window.onload = function(){
+        let existing = getCookie("tasks");
+        if(existing !== ""){
+            let taskArray = existing.split("|");
+            taskArray.forEach(task => renderTask(task));
+        }
+    };
+
     function new_task(){
   let task_input = document.getElementById("task");
 
@@ -83,69 +114,64 @@
         return false
     }
 
-        function setCookie(cname, cvalue, exdays) {
-            const d = new Date();
-            d.setTime(d.getTime() + (exdays*24*60*60*1000));
-            let expires = "expires="+ d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-
-        function getCookie(cname) {
-            let name = cname + "=";
-            let decodedCookie = decodeURIComponent(document.cookie);
-            let ca = decodedCookie.split(";");
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
-        }
-
     let existing = getCookie("tasks");
+    let updated = existing === "" ? task_name : existing + "|" + task_name;
+    setCookie("tasks", updated, 7);
 
-    if(existing === ""){
-        existing = task_name;
-    } else {
-        existing = existing + "|" + task_name;
-    }
-
-    setCookie("tasks", existing, 7);
+    // if(existing === ""){
+    //     existing = task_name;
+    // } else {
+    //     existing = existing + "|" + task_name;
+    // }
+    //
+    // setCookie("tasks", existing, 7);
 
     let new_div = document.createElement("div");
     new_div.className = "task";
     document.getElementById("task_list").appendChild(new_div);
 
+    function renderTask(task_name){
+        let new_div = document.createElement("div");
+        new_div.className = "task";
+        document.getElementById("task_list").appendChild(new_div);
+    }
 
     let checkbox = document.createElement("input");
-        checkbox.setAttribute("onchange", "function strike_(box) {\n" +
-            "   if (box.checked) {\n" +
-                "   box.parentElement.querySelector('span').style.textDecoration = 'line-through';\n" +
-            "   } else {\n" +
-                "   box.parentElement.querySelector('span').style.textDecoration = 'none';\n" +
-            "   } \n" +
-        "   } \n" +
-        "   strike_(this)")
+        // checkbox.setAttribute("onchange", "function strike_(box) {\n" +
+        //     "   if (box.checked) {\n" +
+        //         "   box.parentElement.querySelector('span').style.textDecoration = 'line-through';\n" +
+        //     "   } else {\n" +
+        //         "   box.parentElement.querySelector('span').style.textDecoration = 'none';\n" +
+        //     "   } \n" +
+        // "   } \n" +
+        // "   strike_(this)")
     checkbox.type = "checkbox";
+    checkbox.onchange = function(){
+        this.nextSibling.style.textDecoration = this.checked ? "line-through" : "none";
+    };
     new_div.appendChild(checkbox);
 
     let span = document.createElement("span");
+    span.className = "task_name";
+    span.innerText = task_name;
     new_div.appendChild(span);
     span.setAttribute("class", "task_name");
-    span.innerText = task_name;
 
     let trash = document.createElement("span");
     trash.className = "trash";
     trash.innerText = "X"
+    trash.style.cursor = "pointer";
     trash.style.float = "right";
     trash.addEventListener("click", delete_task);
+    trash.onclick = function() {
+        this.parentElement.remove();
+    }
     new_div.appendChild(trash);
 
-    task_input.value = "";
+
+        task_input.value = "";
+
+
 
     // task_input = focus()
     // how do you do the focus??
