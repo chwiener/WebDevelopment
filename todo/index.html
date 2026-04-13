@@ -76,6 +76,8 @@
         return "";
     }
 
+
+
     window.onload = function(){
         let existing = getCookie("tasks");
         if(existing !== ""){
@@ -86,6 +88,7 @@
 
     function new_task(){
   let task_input = document.getElementById("task");
+
 
     let task_name = task_input.value;
     console.log(task_name);
@@ -174,5 +177,19 @@
 function delete_task(e){
     e.target.parentElement.remove();
 }
+
+    let current_cookie = getCookie("tasks");
+    console.log(current_cookie);
+    current_cookie = current_cookie.split("|");
+    console.log(current_cookie);
+    // console.log(current_cookie.length)
+    // console.log(current_cookie[0]);
+    // current_cookie[1] = current_cookie[1].toUpperCase();
+
+    for(let i = 0; i < current_cookie.length; i = i + 1) {
+        console.log(current_cookie[i])
+    }
+
+
 </script>
 </html>
