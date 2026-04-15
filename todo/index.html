@@ -11,7 +11,7 @@
     <button onclick="new_task()">Add</button>
 
 <h2 style="color: lightslategrey; text-align: center"><u>To-Do List</u></h2>
-    <div id="task_list">
+    <div id="task_list" class="cookieDisplay">
 <!--        <div class="task">-->
 <!--            <input type="checkbox" id="vehicle1" name="vehicle1" value="English HW">-->
 <!--            <label for="vehicle1">English HW</label><br>-->
@@ -57,7 +57,9 @@
         const d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
         let expires = "expires="+ d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        // document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        // PART OF 4/14 HW - NOT SURE IT WORKS
+        document.cookie = cname + "=" + encodeURIComponent(cvalue) + ";" + expires + ";path=/";
     }
 
     function getCookie(cname) {
@@ -71,12 +73,28 @@
             }
             if (c.indexOf(name) == 0) {
                 return c.substring(name.length, c.length);
+
+                // PART OF 4/14 HW - NOT SURE IT WORKS
+
+                document.getElementById("task_list").innerHTML = value.replace(/\n/g, "<br>");
+                return;
             }
         }
+        document.getElementById("task_list").innerHTML = "No saved data found.";
         return "";
     }
 
+    // PART OF 4/14 HW - NOT SURE IT WORKS
 
+    function showMySavedLines() {
+        let rawData = getCookie(cname)
+
+        if (rawData != "") {
+            let formattedText = decodeURIComponent(rawData).replace(/\n/g, "<br>");
+
+            document.getElementById("task_list").innerHTML = formattedText;
+        }
+    }
 
     window.onload = function(){
         let existing = getCookie("tasks");
@@ -85,6 +103,9 @@
             // taskArray.forEach(task => renderTask(task));
         }
     };
+    // PART OF 4/14 HW - NOT SURE IT WORKS
+
+    window.onload = showMySavedLines;
 
     function new_task(){
   let task_input = document.getElementById("task");
@@ -114,6 +135,7 @@
         existing = existing + "|" + task_name;
     }
     // I DON'T KNOW I CAN'T TELL IF IT'S WORKING
+
 
     setCookie("tasks", existing, 7);
 
