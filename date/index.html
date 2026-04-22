@@ -5,7 +5,8 @@
     <title>Date</title>
 </head>
 <body>
-  <h1>Date Object</h1>
+  <h1>Days Until 16 Birthday</h1>
+    <p>Days Remaining: <span id="countdown"></span></p>
 </body>
 
 <script>
@@ -17,6 +18,11 @@
   console.log("THEN: " + then)
 
   console.log((then - now)/1000/60/60/24)
+
+  let diffInMs = then - now;
+  let daysLeft = Math.floor(diffInMs/(1000*60*60*24));
+
+  document.getElementById("countdown").innerText = daysLeft;
 </script>
 
 </html>
