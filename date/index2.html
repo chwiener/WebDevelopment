@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date</title>
+</head>
+<body>
+<h1>Countdown to your Birthday</h1>
+<input id="birthday" type="date" placeholder="your birthday">
+<p>Time Remaining: <span id="days"></span> days, <span id="hours"></span> hours, <span id="minutes"></span> minutes, and <span id="seconds"></span> seconds!</p>
+</body>
+
+<script>
+  count()
+  setInterval(count, 1000);
+
+  function count () {
+    let now = new Date();
+    let then = document.getElementById("birthday")
+    console.log(now)
+    console.log("NOW: " + now);
+
+    // let then = new Date("5/10/26 10:00:00");
+    console.log("THEN: " + then)
+
+    console.log((then - now) / 1000 / 60 / 60 / 24)
+
+    let diffInMs = then - now;
+    let daysLeft = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+    let hoursLeft = Math.floor(diffInMs / (1000 * 60 * 60)) % 24;
+    let minutesLeft = Math.floor(diffInMs / (1000 * 60)) % 60;
+    let secondsLeft = Math.floor(diffInMs / (1000)) % 60;
+
+    document.getElementById("days").innerText = daysLeft;
+    document.getElementById("hours").innerText = hoursLeft;
+    document.getElementById("minutes").innerText = minutesLeft;
+    document.getElementById("seconds").innerText = secondsLeft;
+  }
+</script>
+
+</html>

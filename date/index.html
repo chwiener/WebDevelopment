@@ -5,24 +5,35 @@
     <title>Date</title>
 </head>
 <body>
-  <h1>Days Until 16 Birthday</h1>
-    <p>Days Remaining: <span id="countdown"></span></p>
+  <h1>Countdown to 16 Birthday</h1>
+    <p>Time Remaining: <span id="days"></span> days, <span id="hours"></span> hours, <span id="minutes"></span> minutes, and <span id="seconds"></span> seconds!</p>
 </body>
 
 <script>
-  let now = new Date();
-  console.log(now)
-  console.log("NOW: " + now);
+    count()
+    setInterval(count, 1000);
 
-  let then = new Date("5/10/26 10:00:00");
-  console.log("THEN: " + then)
+    function count () {
+        let now = new Date();
+        console.log(now)
+        console.log("NOW: " + now);
 
-  console.log((then - now)/1000/60/60/24)
+        let then = new Date("5/10/26 10:00:00");
+        console.log("THEN: " + then)
 
-  let diffInMs = then - now;
-  let daysLeft = Math.floor(diffInMs/(1000*60*60*24));
+        console.log((then - now) / 1000 / 60 / 60 / 24)
 
-  document.getElementById("countdown").innerText = daysLeft;
+        let diffInMs = then - now;
+        let daysLeft = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+        let hoursLeft = Math.floor(diffInMs / (1000 * 60 * 60)) % 24;
+        let minutesLeft = Math.floor(diffInMs / (1000 * 60)) % 60;
+        let secondsLeft = Math.floor(diffInMs / (1000)) % 60;
+
+        document.getElementById("days").innerText = daysLeft;
+        document.getElementById("hours").innerText = hoursLeft;
+        document.getElementById("minutes").innerText = minutesLeft;
+        document.getElementById("seconds").innerText = secondsLeft;
+    }
 </script>
 
 </html>
