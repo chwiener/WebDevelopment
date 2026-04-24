@@ -5,27 +5,50 @@
   <title>Date</title>
 </head>
 <body>
-<h1>Countdown to your Birthday</h1>
-<input id="birthday" type="date" placeholder="your birthday">
-<p>Time Remaining: <span id="days"></span> days, <span id="hours"></span> hours, <span id="minutes"></span> minutes, and <span id="seconds"></span> seconds!</p>
+<h1>Countdown to <span class="eventLabel"></span></h1>
+<input id="event" type="text" placeholder="add event here">
+<input id="date" type="date" placeholder="add date here">
+<button id="add">Confirm</button>
+<p id="countdownText">Time Remaining until <span class="eventLabel"></span>: <span id="days"></span> days, <span id="hours"></span> hours, <span id="minutes"></span> minutes, and <span id="seconds"></span> seconds!</p>
 </body>
 
 <script>
+  let targetDate = null;
+
+  document.getElementById("add").addEventListener("click", function () {
+    let eventName = document.getElementById("event").value;
+    let dateValue = document.getElementById("date").value;
+
+    if (!eventName || !dateValue) {
+      alert("Please enter an event name and date!");
+      return;
+    }
+
+    document.getElementsByClassName("eventLabel").innterText = eventName;
+    targetDate = new Date(dateValue + "T00:00:00");
+    document.getElementById("countdownText").style.display = "block";
+  })
+
   count()
   setInterval(count, 1000);
 
   function count () {
+    if(!targetDate) return;
+
     let now = new Date();
-    let then = document.getElementById("birthday")
-    console.log(now)
-    console.log("NOW: " + now);
+    // let then = document.getElementById("date").value;
+
+    // console.log(now)
+    // console.log("NOW: " + now);
 
     // let then = new Date("5/10/26 10:00:00");
-    console.log("THEN: " + then)
+    // console.log("THEN: " + then)
+    //
+    // console.log((then - now) / 1000 / 60 / 60 / 24)
 
-    console.log((then - now) / 1000 / 60 / 60 / 24)
+    // let diffInMs = then - now;
+    let diffInMs = targetDate - now;
 
-    let diffInMs = then - now;
     let daysLeft = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
     let hoursLeft = Math.floor(diffInMs / (1000 * 60 * 60)) % 24;
     let minutesLeft = Math.floor(diffInMs / (1000 * 60)) % 60;
