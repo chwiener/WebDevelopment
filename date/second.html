@@ -5,11 +5,13 @@
   <title>Date</title>
 </head>
 <body>
-<h1>Countdown></span></h1>
+<h1>Countdown</h1>
 <input id="event" type="text" placeholder="add event here">
 <input id="date" type="date" placeholder="add date here">
 <button id="add">Confirm</button>
+<div id="result">
 <p id="countdownText">Time Remaining until <span id="eventLabel"></span>: <span id="days"></span> days, <span id="hours"></span> hours, <span id="minutes"></span> minutes, and <span id="seconds"></span> seconds!</p>
+</div>
 </body>
 
 <script>
@@ -36,6 +38,10 @@
     if(!targetDate) return;
 
     let now = new Date();
+
+    if(dateValue.value == ""){
+
+    }
     // let then = document.getElementById("date").value;
 
     // console.log(now)
