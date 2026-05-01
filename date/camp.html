@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TICS 2026 COUNTDOWN</title>
+</head>
+<body>
+<h1 style="text-decoration-line: underline; text-decoration-color: tan; text-decoration-thickness: 1px">COUNTDOWN TO TIC 2 SUMMER</h1>
+<p>there are <span id="days"></span> days, <span id="hours"></span> hours, <span id="minutes"></span> minutes, and <span id="seconds"></span> seconds until TIC 2 summer!</p>
+
+</body>
+<style>
+ body{
+   background-color: #0e5201;
+ }
+</style>
+<script>
+  count()
+  setInterval(count, 1000);
+
+  function count () {
+    let now = new Date();
+    console.log(now)
+    console.log("NOW: " + now);
+
+    let then = new Date("6/24/26 8:00:00");
+    console.log("THEN: " + then)
+
+    console.log((then - now) / 1000 / 60 / 60 / 24)
+
+    let diffInMs = then - now;
+    let daysLeft = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+    let hoursLeft = Math.floor(diffInMs / (1000 * 60 * 60)) % 24;
+    let minutesLeft = Math.floor(diffInMs / (1000 * 60)) % 60;
+    let secondsLeft = Math.floor(diffInMs / (1000)) % 60;
+
+    document.getElementById("days").innerText = daysLeft;
+    document.getElementById("hours").innerText = hoursLeft;
+    document.getElementById("minutes").innerText = minutesLeft;
+    document.getElementById("seconds").innerText = secondsLeft;
+  }
+</script>
+</html>
