@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Encryption</title>
+</head>
+<body>
+<h1>Encrypt a message</h1>
+<p><label for="key">Enter key: </label><input type="text" id="key"></p>
+<p><label for="plaintext">Enter your message: </label><input type="text" id="plaintext" value="hello"></p>
+<p><button id="encode" onclick="encode()">Encode</button></p>
+
+<p id="ciphertext"></p>
+
+</body>
+<style>
+
+  body{
+    background-color: lightslategrey;
+  }
+
+</style>
+<script>
+  function encode() {
+    let plaintext = document.getElementById("plaintext").value.toUpperCase();
+
+    if (key.value === "stop."){
+
+
+    // The alphabet - input language
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    // encryption language - same length
+    const chars = "0123456789!@#$%^&*()-_=+[{";
+
+    let ciphertext = "";
+
+    for (let i = 0; i < plaintext.length; i++) {
+      let index = alphabet.indexOf(plaintext[i]);
+
+      if (index !== -1) {
+        // here is where is gets swapped from one language to another
+        ciphertext += chars[index];
+      } else {
+        // doesn't apply to everything
+        ciphertext += plaintext[i];
+      }
+    }
+
+    document.getElementById("ciphertext").innerText = ciphertext;
+
+    }else{
+      document.getElementById("ciphertext").innerText = "you don't have the key";
+    }
+  }
+
+
+</script>
+</html>
