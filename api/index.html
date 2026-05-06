@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>food API</title>
+</head>
+<body>
+<h1>food API</h1>
+<img id="randomPhotos" src="https://foodish-api.com/api/" alt="">
+</body>
+<script>
+  let url ="https://foodish-api.com/api/"
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+    console.log(data)
+    document.getElementById("randomPhotos").src = data.image
+  })
+</script>
+</html>
