@@ -2,19 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>food API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Category App</title>
+
+    <style>
+
+        img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+    </style>
 </head>
 <body>
-<h1>food API</h1>
-<img id="randomPhotos" src="https://foodish-api.com/api/" alt="">
-</body>
+
+<div class="container">
+
+    <h1>Food Category Generator</h1>
+
+    <!-- Dropdown -->
+    <select id="category">
+        <option value="pizza">Pizza</option>
+        <option value="burger">Burger</option>
+        <option value="dessert">Dessert</option>
+        <option value="pasta">Pasta</option>
+        <option value="rice">Rice</option>
+        <option value="biryani">Biryani</option>
+        <option value="dosa">Dosa</option>
+        <option value="samosa">Samosa</option>
+    </select>
+
+    <button onclick="getPhoto()">Get Food</button>
+
+    <p id="foodName"></p>
+
+    <img id="randomPhotos" src="" alt="Food image">
+
+</div>
+
 <script>
-  let url ="https://foodish-api.com/api/"
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-    console.log(data)
-    document.getElementById("randomPhotos").src = data.image
-  })
+
+    function getPhoto() {
+
+        // Get selected category
+        const category = document.getElementById("category").value;
+
+        // API URL with category
+        const url = `https://foodish-api.com/api/images/${category}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+
+                console.log(data);
+
+                // Set image
+                document.getElementById("randomPhotos").src = data.image;
+
+                // Show category
+
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    // Load first image automatically
+    getPhoto();
+
 </script>
+
+</body>
 </html>
