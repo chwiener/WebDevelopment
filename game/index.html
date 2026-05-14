@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Test Game</title>
+</head>
+<body>
+<h1>Memory Test!</h1>
+ <div class="container">
+
+     <div class="red">
+         <div id="boxOne" class="red">
+            <div class="triangle"></div>
+         </div>
+     </div>
+
+     <div class="blue">
+        <div id="boxTwo" class="blue">
+            <div class="star"></div>
+        </div>
+     </div>
+
+     <div class="yellow">
+        <div id="boxThree" class="yellow">
+            <div class="circle"></div>
+        </div>
+     </div>
+
+     <div class="green">
+        <div id="boxFour" class="green">
+            <div class="rhombus"></div>
+        </div>
+     </div>
+ </div>
+
+</body>
+<style>
+    .container{
+        display: grid;
+        grid-template-areas:
+                "red blue"
+                "yellow green";
+    }
+    #boxOne {
+        height: 155px;
+        width: 175px;
+        background-color: red;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .triangle {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid #b02020; /* Triangle color */
+    }
+    #boxTwo {
+        height: 155px;
+        width: 175px;
+        background-color: blue;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .star {
+        width: 100px;
+        height: 100px;
+        background: #2c88d4;
+        /* Cutting the square into a 5-pointed star */
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    #boxThree {
+        height: 155px;
+        width: 175px;
+        background-color: yellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .circle{
+        width: 50%;
+        height: 50%;
+        background-color: #d6cf00;
+        border-radius: 100%;
+    }
+    #boxFour {
+        height: 155px;
+        width: 175px;
+        background-color: green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .rhombus{
+        width: 90px;
+        height: 75px;
+        background-color: #43cc5a;
+        transform:rotate(45deg);
+        margin: 50px;
+    }
+</style>
+</html>
