@@ -9,25 +9,25 @@
  <div class="container">
 
      <div class="red">
-         <div id="boxOne" class="red">
+         <div id="boxOne" class="red" role="button" tabindex="0">
             <div class="triangle"></div>
          </div>
      </div>
 
      <div class="blue">
-        <div id="boxTwo" class="blue">
+        <div id="boxTwo" class="blue" role="button" tabindex="0">
             <div class="star"></div>
         </div>
      </div>
 
      <div class="yellow">
-        <div id="boxThree" class="yellow">
+        <div id="boxThree" class="yellow" role="button" tabindex="0">
             <div class="circle"></div>
         </div>
      </div>
 
      <div class="green">
-        <div id="boxFour" class="green">
+        <div id="boxFour" class="green" role="button" tabindex="0">
             <div class="rhombus"></div>
         </div>
      </div>
@@ -40,6 +40,9 @@
         grid-template-areas:
                 "red blue"
                 "yellow green";
+    }
+    [role="button"] {
+        cursor: pointer;
     }
     #boxOne {
         height: 155px;
@@ -102,5 +105,73 @@
         transform:rotate(45deg);
         margin: 50px;
     }
+
+    #boxOne.active{background-color: #ff6666;}
+    #boxTwo.active{background-color: #66b2ff;}
+    #boxThree.active{background-color: #ffff99;}
+    #boxFour.active{background-color: #99ff99;}
 </style>
+<script>
+<!--   arrays tracking available buttons-->
+    const buttonOptions = ['boxOne', 'boxTwo', 'boxThree', 'boxFour'];
+
+//     arrays tracking game pattern options
+    let gamePattern = [];
+    let userPattern = [];
+    let gameStarted = false;
+
+    // click listeners for buttons
+    buttonOptions.forEach(id => {
+        const element = document.getElementById(id);
+    })
+
+    element.addEventListener('click', () => handleUserInput (id));
+
+    element.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleUserInput(id);
+        }
+    })
+
+    function handleUserInput(buttonId) {
+        if (!gameStarted) return;
+
+        flashButton(buttonId);
+        userPattern.push(buttonId);
+
+        checkAnswer
+    }
+
+    // function nextSequence(){
+    //     const randomChoice = buttonOptions[Math.floor(Math.random() * 4)];
+    //     gamePattern.push(randomChoice);
+    //     playPattern();
+    // }
+    //
+    // function playPattern(){
+    //     gamePattern.forEach((buttonId, index) => {
+    //         setTimeout(()=>{
+    //             flashButton(buttonId);
+    //         }, index * 800); // 800ms gap between each flash
+    //     })
+    // }
+    //
+    // function flashButton(buttonId){
+    //     const element = document.getElementById(buttonId);
+    //     element.classList.add('active');
+    //
+    //     setTimeout(()=>{
+    //         element.classList.remove('active');
+    //     }, 400); //timing for button staying lit (400ms)
+    // }
+    //
+    // //has to be activated somehow...on page click or button???
+    // //trying page click
+    // window.addEventListener('click', () => {
+    //     if (gamePattern.length === 0){
+    //         nextSequence();
+    //     }
+    // }, {once: true});
+</script>
 </html>
