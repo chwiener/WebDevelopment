@@ -123,7 +123,6 @@
     // click listeners for buttons
     buttonOptions.forEach(id => {
         const element = document.getElementById(id);
-    })
 
     element.addEventListener('click', () => handleUserInput (id));
 
@@ -140,8 +139,68 @@
         flashButton(buttonId);
         userPattern.push(buttonId);
 
-        checkAnswer
+        checkAnswer(userPattern.length - 1)
     }
+
+    function checkAnswer(currentLevel) {
+        if (userPattern[currentLevel] === gamePattern[currentLevel]) {
+            if (userPattern.length === gamePattern.length) {
+                gameStarted = false;
+                setTimeout(() => {
+                    nextSequence();
+                }, 1000); //timing between flashes
+            }
+        } else {
+            //code for if mistake is made
+            document.querySelector('h1').innerText = "Game Over! Click anywhere to start again";
+            resetGame ()
+        }
+    }
+
+    //next step in sequence (when one pattern is recreated accurately)
+    function nextSequence() {
+        userPattern = [];
+        gameStarted = false;
+
+        const randomChoice = buttonOptions[Math.floor(Math.random() * 4)];
+        gamePattern.push(randomChoice);
+
+        document.querySelector('h1').innerText = `Level ${gamePattern.length}`;
+        playPattern();
+    }
+
+    function playPattern() {
+        gamePattern.forEach((buttonId, index) => {
+            setTimeout(() =>{
+                flashButton(buttonId);
+                if (index === gamePattern.length - 1) {
+                    setTimeout(() =>{gameStarted = true;}, 400);
+                }
+            }, index * 600);
+        });
+    }
+
+    function flashButton(buttonId) {
+        const element = document.getElementById(buttonId);
+        element.classList.add('active');
+        setTimeout(() =>{
+            element.classList.remove('active');
+        }, 300);
+    }
+
+    //reset structure when player loses
+    function resetGame() {
+        gamePattern = [];
+        gameStarted = false;
+    }
+
+    //game trigger by pressing screen anywhere
+    window.addEventListener('click', () => {
+        if (gamePattern.length === 0 && !gameStarted) {
+            nextSequence();
+        }
+    })
+        })
 
     // function nextSequence(){
     //     const randomChoice = buttonOptions[Math.floor(Math.random() * 4)];
